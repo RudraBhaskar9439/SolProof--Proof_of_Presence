@@ -1,0 +1,70 @@
+### Test API Endpoints
+
+@baseUrl = http://localhost:3000/api
+@organizerWallet = 7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU
+@attendeeWallet = 9yHrt2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgXYZ
+
+### 1. Create Event
+POST {{baseUrl}}/events/create
+Content-Type: application/json
+
+{
+  "eventId": "event_test_001",
+  "eventName": "Solana Meetup Mumbai",
+  "description": "A gathering of Solana developers in Mumbai",
+  "eventDate": "2025-12-01T18:00:00Z",
+  "location": "Mumbai, India",
+  "maxAttendees": 100,
+  "metadataUri": "https://arweave.net/test-metadata",
+  "nftImageUrl": "https://arweave.net/test-image",
+  "organizerWallet": "{{organizerWallet}}",
+  "eventPda": "EventPDA123456"
+}
+
+### 2. Generate QR Code
+POST {{baseUrl}}/events/generate-qr
+Content-Type: application/json
+
+{
+  "eventId": "event_test_001",
+  "organizerWallet": "{{organizerWallet}}"
+}
+
+### 3. Verify QR Code
+POST {{baseUrl}}/events/verify-qr
+Content-Type: application/json
+
+{
+  "qrData": "BASE64_QR_DATA_HERE",
+  "attendeeWallet": "{{attendeeWallet}}"
+}
+
+### 4. Mint Badge (Record Attendance)
+POST {{baseUrl}}/events/mint-badge
+Content-Type: application/json
+
+{
+  "eventId": "event_test_001",
+  "attendeeWallet": "{{attendeeWallet}}",
+  "nftMint": "NFTMintAddress123",
+  "nftTokenAccount": "TokenAccountAddress456",
+  "transactionSignature": "5j7s8K9L0mN1oP2qR3sT4uV5wX6yZ7aB8cD9eF0gH1i",
+  "metadataUri": "https://arweave.net/badge-metadata"
+}
+
+### 5. Get User Profile
+GET {{baseUrl}}/profile/{{attendeeWallet}}
+
+### 6. Update User Profile
+PUT {{baseUrl}}/profile/update
+Content-Type: application/json
+
+{
+  "walletAddress": "{{attendeeWallet}}",
+  "displayName": "Web3 Developer",
+  "bio": "Passionate about building on Solana",
+  "avatarUrl": "https://avatars.com/my-avatar.png"
+}
+
+### 7. Get Leaderboard
+GET {{baseUrl}}/leaderboard?limit=10
