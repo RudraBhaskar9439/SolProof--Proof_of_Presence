@@ -1,0 +1,5 @@
+// If using VS Code's REST Client extension with a .http file
+@baseUrl = http://localhost:5000 // Adjust if your server runs on a different port
+@organizerWallet = 9ETU3edMKvxRSRMasMMMPeqAHZ7kTkFSTQ2aKfnkeMss
+@attendeeWallet = 9yHrt2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgXYZ
+// Make sure these are valid Solana public keys, even if they're just dummy ones for testing.
