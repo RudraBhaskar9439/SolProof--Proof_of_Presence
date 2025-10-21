@@ -1,0 +1,8 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/page": "/",
+  "/leaderboard/page": "/leaderboard",
+  "/scan/page": "/scan",
+  "/events/page": "/events",
+  "/profile/page": "/profile"
+}
