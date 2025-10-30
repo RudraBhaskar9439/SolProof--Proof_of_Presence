@@ -28,6 +28,9 @@
 - ✅ **Decentralized** - User-owned data and reputation
 - ✅ **Instant Verification** - Anyone can verify on-chain
 - ✅ **Automated** - QR code-based check-in system
+<img width="1529" height="1092" alt="Screenshot 2025-10-30 at 8 31 12 AM" src="https://github.com/user-attachments/assets/865e7f7d-7ba2-4e28-9059-efe474daa4c0" />
+<img width="1549<img width="1794" height="376" alt="Screenshot 2025-10-30 at 11 14 19 PM" src="https://github.com/user-attachments/assets/e07586a4-aa48-46fb-a716-4190af2d8d87" />
+" height="1114" alt="Screenshot 2025-10-30 at 8 31 33 AM" src="https://github.com/user-attachments/assets/c0feba71-c7aa-4d8b-b55c-395acabb3f78" />
 
 ---
 
