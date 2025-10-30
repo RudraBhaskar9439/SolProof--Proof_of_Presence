@@ -5,3 +5,14 @@ target
 node_modules
 test-ledger
 .yarn
+
+# Next.js build files
+frontend/.next/
+frontend/.next/cache/
+frontend/.next/static/
+frontend/.next/server/
+frontend/out/
+
+# Build artifacts
+*.pack
+*.pack.old

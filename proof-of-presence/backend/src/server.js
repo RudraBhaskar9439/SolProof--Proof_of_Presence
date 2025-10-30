@@ -15,7 +15,10 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors()); // Enable CORS for all routes
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  credentials: true
+})); // Enable CORS for frontend
 app.use(helmet()); // Add security headers
 app.use(express.json()); // Parse JSON request bodies
 app.use(morgan('dev')); // Log HTTP requests

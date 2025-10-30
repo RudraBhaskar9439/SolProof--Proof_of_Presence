@@ -78,23 +78,23 @@
   --font-sans: "Geist", "Geist Fallback";
   --font-mono: "Geist Mono", "Geist Mono Fallback";
 
-  /* Primary brand colors - Solana purple/green accent */
-  --color-primary: #14f195;
-  --color-primary-dark: #00d4aa;
-  --color-primary-light: #26ff9f;
+  /* Custom brand colors - Purple, Pink, Green */
+  --color-primary: #50207A;
+  --color-primary-dark: #3d1860;
+  --color-primary-light: #6b2da0;
 
-  /* Neutrals - Dark theme */
-  --color-background: #0a0e27;
-  --color-surface: #1a1f3a;
-  --color-surface-light: #252d4a;
-  --color-foreground: #f5f7fa;
-  --color-foreground-muted: #a0aec0;
+  /* Clean dark theme with excellent contrast */
+  --color-background: #0a0a0f;
+  --color-surface: #1a1a24;
+  --color-surface-light: #2a2a38;
+  --color-foreground: #ffffff;
+  --color-foreground-muted: #ffffff;
 
-  /* Accents */
-  --color-accent: #9945ff;
-  --color-success: #14f195;
-  --color-error: #ff6b6b;
-  --color-warning: #ffb84d;
+  /* Brand accents */
+  --color-accent: #FF48B9;
+  --color-success: #12CE6A;
+  --color-error: #f43f5e;
+  --color-warning: #fbbf24;
 
   /* Radius */
   --radius: 0.5rem;
@@ -145,37 +145,72 @@
   body {
     @apply bg-background text-foreground;
   }
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    color: #FFFFFF;
+    text-shadow: 0 0 20px rgba(255, 128, 208, 0.3);
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-6 py-3 bg-primary text-background font-semibold rounded-lg hover:bg-primary-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply px-8 py-4 bg-gradient-to-r from-[#50207A] to-[#FF48B9] text-white font-bold rounded-xl hover:shadow-2xl hover:shadow-[#FF48B9]/60 hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 bg-surface-light text-foreground border border-primary rounded-lg hover:bg-surface transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply px-8 py-4 bg-[#2a2a38] text-white border-2 border-[#50207A] rounded-xl hover:bg-[#3a3a48] hover:shadow-xl hover:shadow-[#50207A]/30 hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-semibold;
   }
 
   .card {
-    @apply bg-surface rounded-lg p-6 border border-surface-light;
+    @apply bg-gradient-to-br from-[#3d1860] to-[#2a1045] rounded-2xl p-8 border-2 border-[#FF48B9]/30 hover:border-[#FF48B9] hover:shadow-2xl hover:shadow-[#FF48B9]/50 hover:-translate-y-2 transition-all duration-300;
   }
 
   .input-field {
-    @apply w-full px-4 py-2 bg-surface-light border border-surface-light rounded-lg text-foreground placeholder-muted focus:outline-none focus:border-primary transition-colors;
+    @apply w-full px-5 py-4 bg-[#2a2a38] border-2 border-[#3a3a48] rounded-xl text-white placeholder-[#cbd5e1] focus:outline-none focus:border-[#FF48B9] focus:shadow-lg focus:shadow-[#FF48B9]/30 transition-all duration-300;
   }
 }
 
-/* Added smooth animations and transitions */
+/* Modern animations and effects */
 @layer utilities {
   .transition-smooth {
     @apply transition-all duration-300 ease-in-out;
   }
 
   .animate-fade-in {
-    @apply animate-in fade-in duration-300;
+    @apply animate-in fade-in duration-500;
   }
 
   .animate-slide-up {
-    @apply animate-in slide-in-from-bottom-4 duration-300;
+    @apply animate-in slide-in-from-bottom-8 duration-500;
   }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#FF48B9] to-[#50207A] bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    @apply bg-[#1a1a24]/70 backdrop-blur-xl border border-[#FF48B9]/20;
+  }
+
+  .glow-effect {
+    @apply shadow-2xl shadow-[#FF48B9]/60;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #50207A 0%, #FF48B9 100%);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FF48B9 0%, #50207A 100%);
 }

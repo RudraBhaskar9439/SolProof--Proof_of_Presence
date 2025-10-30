@@ -24,9 +24,10 @@ async function getLeaderboard(req, res, next) {
       return next(new Error(formatDbError(error, 'Failed to fetch leaderboard').message));
     }
 
-    // Add rank to each user
+    // Add rank to each user and map display_name to username
     const rankedUsers = users?.map((user, index) => ({
       ...user,
+      username: user.display_name || user.username || 'Anonymous', // Map display_name to username
       rank: index + 1,
     }));
 

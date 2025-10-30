@@ -1,0 +1,17 @@
+backend
+node_modules
+.next
+.git
+*.log
+.DS_Store
+target
+programs
+tests
+migrations
+solana
+app
+Cargo.lock
+Cargo.toml
+Anchor.toml
+*.md
+!README.md

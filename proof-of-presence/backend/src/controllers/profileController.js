@@ -4,7 +4,8 @@ const { PublicKey } = require('@solana/web3.js');
 
 const getProfile = async (req, res, next) => {
   try {
-    const { walletAddress } = req.params;
+    const { wallet } = req.params;
+    const walletAddress = wallet;
 
     // Get user profile
     const { data: profile, error: profileError } = await supabaseAdmin
@@ -42,21 +43,35 @@ const getProfile = async (req, res, next) => {
     if (!profile) {
       // Profile doesn't exist yet, return a default empty profile
       return res.status(200).json({
-        wallet_address: walletAddress,
-        total_badges: 0,
-        reputation_score: 0,
-        attendances: attendances || [],
-        display_name: null,
-        avatar_url: null,
-        bio: null,
-        created_at: null,
-        updated_at: null,
+        success: true,
+        profile: {
+          wallet_address: walletAddress,
+          username: null,
+          total_badges: 0,
+          reputation_score: 0,
+          attended_events: [],
+          created_at: null,
+          updated_at: null,
+        }
       });
     }
 
+    // Format attended events from attendances
+    const attended_events = (attendances || []).map(att => ({
+      event_name: att.events?.event_name || 'Unknown Event',
+      event_date: att.events?.event_date || null,
+      location: att.events?.location || null,
+      checked_in_at: att.checked_in_at,
+      nft_mint: att.nft_mint
+    }));
+
     res.status(200).json({
-      ...profile,
-      attendances: attendances || [],
+      success: true,
+      profile: {
+        ...profile,
+        username: profile.display_name || profile.username, // Map display_name to username for frontend
+        attended_events
+      }
     });
   } catch (error) {
     console.error('Get profile error:', error);

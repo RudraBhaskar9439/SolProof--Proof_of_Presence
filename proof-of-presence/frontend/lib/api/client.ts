@@ -1,17 +1,19 @@
 import axios from "axios"
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api"
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000"
 
 export const apiClient = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: `${API_BASE_URL}/api`,
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true,
 })
 
 // Event endpoints
 export const eventAPI = {
-  create: (data: any) => apiClient.post("/events/create", data),
+  create: (data: any) => apiClient.post("/events", data),
+  getAll: () => apiClient.get("/events"),
   generateQR: (data: any) => apiClient.post("/events/generate-qr", data),
   mintBadge: (data: any) => apiClient.post("/events/mint-badge", data),
 }

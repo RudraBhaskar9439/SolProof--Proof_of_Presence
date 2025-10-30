@@ -19,8 +19,7 @@ const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
         autoRefreshToken: false,
         persistSession: false
     }
-    }
-);
+});
 
 module.exports = {
     supabase,
